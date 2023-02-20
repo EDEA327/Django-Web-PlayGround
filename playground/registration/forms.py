@@ -7,7 +7,7 @@ class UserCretionFormwithEmail(UserCreationForm):
 
     class Meta:
         model = User
-        files = {'username','email','password1','password2'}
+        fields = {'username','email','password1','password2'}
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

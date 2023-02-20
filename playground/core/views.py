@@ -15,3 +15,7 @@ class HomePageView(TemplateView): # La clase tiene que heredar
         return render(request,self.template_name,self.context)
 class SamplePageView(TemplateView):
     template_name = "core/sample.html"
+
+
+def carlos(request):
+    return render(request,'core/carlos.html')
