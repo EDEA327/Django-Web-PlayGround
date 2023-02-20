@@ -124,6 +124,14 @@ LOGOUT_REDIRECT_URL = 'home'
 
 STATIC_URL = 'static/'
 
+#Emails
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = BASE_DIR + 'sent_emails',
+
+else:
+    #Aqui toca configurar un email real
+    pass
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
