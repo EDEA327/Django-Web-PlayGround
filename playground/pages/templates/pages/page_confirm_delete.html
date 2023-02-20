@@ -8,9 +8,11 @@
     <div class="row mt-3">
       <div class="col-md-9 mx-auto">
         <div>
-            <form action="" method="post">{% csrf_token %}
+            <form action="" method="post">
+              {% csrf_token %}
                 <p>¿Estás seguro de que quieres borrar "{{ object }}"?</p>
-                <input type="submit" value="Sí, borrar la página" />
+                <input type="submit" class="btn btn-primary btn-block" value="Si, Borrar la página" />
+                <a href="{% url 'pages:pages'%}" class="btn btn-primary btn-block">No, Mantener la página</a>
             </form>
         </div>
       </div>
