@@ -117,7 +117,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Auth Redirects
-LOGIN_REDIRECT_URL = 'pages:pages'
+# LOGIN_REDIRECT_URL = 'pages:pages'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Static files (CSS, JavaScript, Images)
