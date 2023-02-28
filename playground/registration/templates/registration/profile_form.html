@@ -14,6 +14,8 @@
               {% if request.user.profile.avatar %}
                 <img src="{{request.user.profile.avatar.url}}" class="img-fluid">
                 <p class="mt-1">¿Borrar? <input type="checkbox" id="avatar-clear" name="avatar-clear" /></p>
+              {% else %}
+                <img src="{% static 'registration/img/no-avatar.jpg' %}" alt="Foto generica" class="img-fluid">
               {% endif %}
             </div>
             <!-- Formulario -->
