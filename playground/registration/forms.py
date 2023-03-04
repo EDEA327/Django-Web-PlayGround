@@ -8,7 +8,7 @@ class UserCretionFormwithEmail(UserCreationForm):
 
     class Meta:
         model = User
-        fields = {'username','email','password1','password2'}
+        fields = ('username','email','password1','password2')
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -19,7 +19,7 @@ class UserCretionFormwithEmail(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields =['avatar','bio','link']
+        fields = ('avatar','bio','link')
         widgets = {
             'avatar' : forms.ClearableFileInput(attrs={'class':'form-control-file mt-3'}),
             'bio': forms.Textarea(attrs={'class':'form-control mt-3','rows':3,'placeholder':'Biografia'}),
