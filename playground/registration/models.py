@@ -14,6 +14,9 @@ class Profile(models.Model):
     bio = models.TextField(null=True, blank=True)
     link = models.URLField(null=True, blank=True,max_length=200)
 
+    class Meta:
+        ordering = ['user__username']
+
 @receiver(post_save,sender = User)
 def ensure_profile_exists(sender,instance,**kwargs):
     #* Nos aseguramos de que solo se ejecute la primera vez...
