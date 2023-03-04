@@ -1,11 +1,14 @@
-from .forms import UserCretionFormwithEmail,ProfileForm,EmailForm
-from django.views.generic import CreateView
-from django.views.generic.edit import UpdateView
-from django.utils.decorators import method_decorator
+#Django Imports
+from django import forms
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
-from django import forms
+from django.utils.decorators import method_decorator
+from django.views.generic import CreateView
+from django.views.generic.edit import UpdateView
+#Local Imports
+from .forms import EmailForm, ProfileForm, UserCretionFormwithEmail
 from .models import Profile
+
 
 # Create your views here.
 class SignUpView(CreateView):
