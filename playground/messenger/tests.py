@@ -12,7 +12,7 @@ class ThreadTestCase(TestCase):
 
     def test_add_users_to_thread(self):
         self.thread.users.add(self.user1,self.user2)
-        self.assertEqual(self.thread.users.all(),2)
+        self.assertEqual(len(self.thread.users.all()),2)
 
     def test_filter_threads_by_users(self):
         self.thread.users.add(self.user1,self.user2)
@@ -22,3 +22,13 @@ class ThreadTestCase(TestCase):
     def test_filter_non_existent_threads(self):
         threads = Thread.objects.filter(users=self.user1).filter(users=self.user2)
         self.assertEqual(len(threads),0)
+
+    def test_add_message_to_thread(self):
+        self.thread.users.add(self.user1,self.user2)
+        message1 = Message.objects.create(user=self.user1,content="Hola Buenas tardes")
+        message2 = Message.objects.create(user=self.user2,content="Buenas tardes")
+        self.thread.messages.add(message1,message2)
+        self.assertEqual(len(self.thread.messages.all()),2)
+
+        for message in self.thread.messages.all():
+            print(f'{message.user}: {message.content}')
