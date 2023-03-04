@@ -8,8 +8,6 @@ from django.views.generic.list import ListView
 
 from .forms import PageForm
 from .models import Page
-
-
 # Create your views here.
 class StaffRequiredMixin(object):
     """This mixin requires the user to be a member of the staff. """
