@@ -32,3 +32,14 @@ class ThreadTestCase(TestCase):
 
         for message in self.thread.messages.all():
             print(f'{message.user}: {message.content}')
+
+    def test_add_message_from_user_not_in_thread(self):
+        self.thread.users.add(self.user1,self.user2)
+        message1 = Message.objects.create(user=self.user1,content="Hola")
+        message2 = Message.objects.create(user=self.user2,content="Buenas")
+        message3 = Message.objects.create(user=self.user3,content="tardes")
+        self.thread.messages.add(message1,message2,message3)
+        self.assertEqual(len(self.thread.messages.all),2)
+
+
+
