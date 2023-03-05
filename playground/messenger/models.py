@@ -34,7 +34,7 @@ class Thread(models.Model):
 
     objects = ThreadManager()
     class Meta:
-        ordering = ('-updated')
+        ordering = ['-updated']
 
 def message_changed(sender,**kwargs):
     instance = kwargs.pop('instance', None)
@@ -44,7 +44,7 @@ def message_changed(sender,**kwargs):
 
     false_pk_set = set()
 
-    if action is 'pre_add':
+    if action == 'pre_add':
         for msg_pk in pk_set:
             msg = Message.objects.get(pk=msg_pk)
             if msg.user not in instance.users.all():
