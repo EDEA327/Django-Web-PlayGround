@@ -25,14 +25,16 @@ class ThreadManager(models.Manager):
         if thread is None:
             thread = Thread.objects.create()
             thread.users.add(user1,user2)
-        print("Se creo el thread")
         return thread
 
 class Thread(models.Model):
     users = models.ManyToManyField(User, related_name='threads')
     messages = models.ManyToManyField(Message)
+    updated = models.DateTimeField(auto_now=True)
 
     objects = ThreadManager()
+    class Meta:
+        ordering = ('-updated')
 
 def message_changed(sender,**kwargs):
     instance = kwargs.pop('instance', None)
@@ -49,5 +51,8 @@ def message_changed(sender,**kwargs):
                 false_pk_set.add(msg_pk)
 
     pk_set.difference_update(false_pk_set)
+
+    #! Forzar actualización
+    instance.save()
 
 m2m_changed.connect(message_changed,sender=Thread.messages.through)
